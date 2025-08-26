@@ -35,6 +35,21 @@ export default function Destinations() {
     const handleBook = (place) => {
     navigate('/book', { state: { destination: place } });
   };
+   useEffect(() => {
+    fetch('/api/destinations.json')
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to fetch');
+        return res.json();
+      })
+      .then(data => {
+        setDestinations(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        setError(err.message);
+        setLoading(false);
+      });
+  }, []);
   
  return (
     <div style={{ padding: '2rem' }}>
