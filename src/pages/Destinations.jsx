@@ -27,35 +27,64 @@ export default function Destinations() {
       });
   }, []);
 
-  // ✅ Apply the dynamic return block here
   if (loading) return <p style={{ padding: '2rem' }}>Loading destinations...</p>;
   if (error) return <p style={{ padding: '2rem', color: 'red' }}>Error: {error}</p>;
 
   return (
-    <div style={{ padding: '2rem' }}>
-      <h2>Explore Destinations</h2>
-      <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+    <div style={{
+      padding: '2rem',
+      animation: 'fadeSlideIn 0.8s ease-out',
+      animationFillMode: 'forwards'
+    }}>
+      <h2 style={{
+        textAlign: 'center',
+        fontSize: '2rem',
+        marginBottom: '2rem',
+        fontFamily: '"Bebas Neue", sans-serif'
+      }}>
+        Explore Destinations
+      </h2>
+
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+        gap: '2rem',
+        justifyContent: 'center'
+      }}>
         {destinations.map((place, index) => (
           <div key={index} style={{
-            width: '300px',
-            border: '1px solid #ccc',
-            borderRadius: '8px',
+            background: '#fff',
+            borderRadius: '12px',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
             overflow: 'hidden',
-            boxShadow: '0 4px 8px rgba(0,0,0,0.1)'
-          }}>
-            <img src={place.image} alt={place.name} style={{ width: '100%', height: '200px', objectFit: 'cover' }} />
+            transition: 'transform 0.3s ease',
+            cursor: 'pointer'
+          }}
+          onMouseOver={e => e.currentTarget.style.transform = 'scale(1.02)'}
+          onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}
+          >
+            <img src={place.image} alt={place.name} style={{
+              width: '100%',
+              height: '200px',
+              objectFit: 'cover'
+            }} />
             <div style={{ padding: '1rem' }}>
-              <h3>{place.name}</h3>
-              <p>{place.description}</p>
-              {place.price && <p><strong>{place.price}</strong></p>}
+              <h3 style={{ marginBottom: '0.5rem', fontSize: '1.2rem' }}>{place.name}</h3>
+              <p style={{ fontSize: '0.95rem', color: '#555' }}>{place.description}</p>
+              {place.price && <p style={{ fontWeight: 'bold', marginTop: '0.5rem' }}>{place.price}</p>}
               <button onClick={() => handleBook(place)} style={{
-                background: '#0077cc',
+                marginTop: '1rem',
+                padding: '0.6rem 1.2rem',
+                background: 'linear-gradient(to right, #00b4db, #0083b0)',
                 color: '#fff',
                 border: 'none',
-                padding: '0.5rem 1rem',
-                borderRadius: '4px',
-                cursor: 'pointer'
-              }}>
+                borderRadius: '20px',
+                cursor: 'pointer',
+                transition: 'transform 0.3s ease'
+              }}
+              onMouseOver={e => e.currentTarget.style.transform = 'scale(1.05)'}
+              onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}
+              >
                 Book Now
               </button>
             </div>

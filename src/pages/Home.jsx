@@ -11,36 +11,48 @@ export default function Home() {
   };
 
   return (
-    <div style={{ height: '100vh', overflow: 'hidden' }}>
+    <div style={{
+      height: '100vh',
+      width: '100vw',
+      overflow: 'hidden',
+      backgroundColor: '#fdf6f0',
+      position: 'relative'
+    }}>
       <Sidebar />
 
-      <div style={{ height: '100%', overflowY: 'auto', paddingTop: '160px' }}>
+      <div style={{
+        height: '100%',
+        overflowY: 'auto',
+        paddingTop: '160px',
+        paddingLeft: '1rem',
+        paddingRight: '1rem',
+        boxSizing: 'border-box',
+        width: '100%'
+      }}>
         <Header />
 
-        <div
-          style={{
-            padding: '2rem',
-            textAlign: 'center',
-            maxWidth: '800px',
-            margin: '0 auto',
-            animation: 'fadeSlideIn 1s ease-out', // 👈 Apply animation
-            animationFillMode: 'forwards'
-          }}
-        >
+        <div style={{
+          maxWidth: '800px',
+          margin: '0 auto',
+          textAlign: 'center',
+          animation: 'fadeSlideIn 1s ease-out',
+          animationFillMode: 'forwards'
+        }}>
           <h2 style={{
-            fontSize: '2.2rem',
+            fontSize: '2.4rem',
             fontWeight: '600',
             marginBottom: '1rem',
             fontFamily: '"Bebas Neue", sans-serif',
-            letterSpacing: '1px'
+            letterSpacing: '1px',
+            color: '#333'
           }}>
             Welcome to Unplanned Explorers
           </h2>
 
           <p style={{
-            fontSize: '1.1rem',
+            fontSize: '1.2rem',
             fontStyle: 'italic',
-            color: '#444',
+            color: '#555',
             marginBottom: '2rem'
           }}>
             Your journey begins here.
@@ -51,26 +63,24 @@ export default function Home() {
             style={{
               padding: '0.8rem 1.6rem',
               fontSize: '1rem',
-              background: 'linear-gradient(to right, #00b4db, #0083b0)',
+              background: 'linear-gradient(to right, #ff7e5f, #feb47b)',
               color: '#fff',
               border: 'none',
               borderRadius: '30px',
               cursor: 'pointer',
-              transition: 'transform 0.3s ease'
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease'
             }}
-            onMouseOver={e => e.currentTarget.style.transform = 'scale(1.05)'}
-            onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}
+            onMouseOver={e => {
+              e.currentTarget.style.transform = 'scale(1.05)';
+              e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
+            }}
+            onMouseOut={e => {
+              e.currentTarget.style.transform = 'scale(1)';
+              e.currentTarget.style.boxShadow = 'none';
+            }}
           >
             Start Exploring
           </button>
-
-          <div style={{
-            marginTop: '3rem',
-            fontSize: '0.95rem',
-            color: '#666'
-          }}>
-            <em>“Not all those who wander are lost.” — J.R.R. Tolkien</em>
-          </div>
         </div>
       </div>
     </div>

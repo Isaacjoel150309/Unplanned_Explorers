@@ -5,12 +5,11 @@ export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
   const [showNav, setShowNav] = useState(false);
 
-  // Delay nav visibility to match transition
   useEffect(() => {
     if (isOpen) {
       setShowNav(true);
     } else {
-      const timer = setTimeout(() => setShowNav(false), 600); // match transition duration
+      const timer = setTimeout(() => setShowNav(false), 600);
       return () => clearTimeout(timer);
     }
   }, [isOpen]);
@@ -52,8 +51,8 @@ export default function Sidebar() {
           top: 0,
           left: 0,
           height: '100vh',
-          width: isOpen ? '150px' : '0px', // 👈 Overlay style
-          background: '#ffffff',
+          width: isOpen ? '150px' : '0px',
+          background: '#fff8f4',
           overflow: 'hidden',
           boxShadow: isOpen ? '2px 0 8px rgba(0,0,0,0.1)' : 'none',
           zIndex: 1000,
@@ -77,25 +76,28 @@ export default function Sidebar() {
                 flexDirection: 'column',
                 gap: '1rem',
                 marginTop: '4rem',
-                fontFamily: "https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+                fontFamily: '"Bebas Neue", sans-serif'
               }}
             >
               {[
-                { path: '/', label: '  Home' },
-                { path: '/destinations', label: '  Destinations' },
-                { path: '/book', label: '  Book a Trip' },
-                { path: '/gallery', label: '  Gallery' },
-                { path: '/contact', label: '  Contact Us' }
+                { path: '/', label: 'Home' },
+                { path: '/destinations', label: 'Destinations' },
+                { path: '/book', label: 'Book a Trip' },
+                { path: '/gallery', label: 'Gallery' },
+                { path: '/contact', label: 'Contact Us' }
               ].map(({ path, label }) => (
                 <NavLink
                   key={path}
                   to={path}
-                  onClick={closeSidebar} // 👈 Auto-close on click
+                  onClick={closeSidebar}
                   style={{
                     textDecoration: 'none',
                     color: '#333',
-                    fontSize: '1rem'
+                    fontSize: '1rem',
+                    transition: 'color 0.3s ease'
                   }}
+                  onMouseOver={e => e.currentTarget.style.color = '#ff7e5f'}
+                  onMouseOut={e => e.currentTarget.style.color = '#333'}
                 >
                   {label}
                 </NavLink>

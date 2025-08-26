@@ -4,6 +4,18 @@
   padding: 2rem;
   text-align: center;
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html, #root {
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
 
 .logo {
   height: 6em;
@@ -52,4 +64,24 @@
 
 .read-the-docs {
   color: #888;
+}
+@keyframes fadeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

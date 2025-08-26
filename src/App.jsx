@@ -15,7 +15,7 @@ function App() {
       <Sidebar />
 
       {/* Main Content Area */}
-      <div style={{ flex: 1, padding: '2rem' }}>
+      <div style={{ flex: 1,  }}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/destinations" element={<Destinations />} />
