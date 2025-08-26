@@ -1,41 +1,17 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-import DestinationCard from '../components/DestinationCard';
-
-
-
-const destinations = [
-  {
-    name: 'Spiti Valley',
-    image: '/images/spiti.jpg',
-    description: 'Remote Himalayan beauty with monasteries and rugged terrain.',
-    price: '₹12,500'
-  },
-  {
-    name: 'Meghalaya Caves',
-    image: 'images/meghalaya-caves.jpg',
-    description: 'Explore India’s deepest caves and lush landscapes.',
-    price: '₹9,800'
-  },
-  {
-    name: 'Andaman Islands',
-    image: 'images/andaman.jpg',
-    description: 'Crystal-clear waters and coral reefs for the perfect escape.',
-    price: '₹18,000'
-  }
-];
+import { useNavigate } from 'react-router-dom';
 
 export default function Destinations() {
-    const navigate = useNavigate();
-    const [destinations, setDestinations] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+  const navigate = useNavigate();
+  const [destinations, setDestinations] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-    const handleBook = (place) => {
+  const handleBook = (place) => {
     navigate('/book', { state: { destination: place } });
   };
-   useEffect(() => {
+
+  useEffect(() => {
     fetch('/api/destinations.json')
       .then(res => {
         if (!res.ok) throw new Error('Failed to fetch');
@@ -50,19 +26,28 @@ export default function Destinations() {
         setLoading(false);
       });
   }, []);
-  
- return (
+
+  // ✅ Apply the dynamic return block here
+  if (loading) return <p style={{ padding: '2rem' }}>Loading destinations...</p>;
+  if (error) return <p style={{ padding: '2rem', color: 'red' }}>Error: {error}</p>;
+
+  return (
     <div style={{ padding: '2rem' }}>
       <h2>Explore Destinations</h2>
       <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', justifyContent: 'center' }}>
         {destinations.map((place, index) => (
-          <div key={index} style={{ width: '300px', border: '1px solid #ccc', borderRadius: '8px', overflow: 'hidden', boxShadow: '0 4px 8px rgba(0,0,0,0.1)' }}>
+          <div key={index} style={{
+            width: '300px',
+            border: '1px solid #ccc',
+            borderRadius: '8px',
+            overflow: 'hidden',
+            boxShadow: '0 4px 8px rgba(0,0,0,0.1)'
+          }}>
             <img src={place.image} alt={place.name} style={{ width: '100%', height: '200px', objectFit: 'cover' }} />
             <div style={{ padding: '1rem' }}>
               <h3>{place.name}</h3>
               <p>{place.description}</p>
-              <p><strong>{place.price}</strong></p>
-              
+              {place.price && <p><strong>{place.price}</strong></p>}
               <button onClick={() => handleBook(place)} style={{
                 background: '#0077cc',
                 color: '#fff',
@@ -73,9 +58,6 @@ export default function Destinations() {
               }}>
                 Book Now
               </button>
-              <button onClick={() => navigate('/book', { state: { destination: title } })}>
-  Book Now
-</button>
             </div>
           </div>
         ))}
