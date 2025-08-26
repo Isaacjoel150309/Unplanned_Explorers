@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Spiti Valley",
+    "description": "Remote Himalayan beauty with monasteries and rugged terrain.",
+    "image": "/images/spiti.jpg"
+  },
+  {
+    "title": "Meghalaya Caves",
+    "description": "Explore India’s deepest caves and lush landscapes.",
+    "image": "/images/meghalaya-caves.jpg"
+  },
+  {
+    "title": "Andaman Islands",
+    "description": "Crystal-clear waters and coral reefs for the perfect escape.",
+    "image": "/images/andaman.jpg"
+  }
+]
