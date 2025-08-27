@@ -33,6 +33,8 @@ export default function Destinations() {
   return (
     <div style={{
       padding: '2rem',
+      backgroundColor: '#fdf6f0', // 🌅 Sunset background
+      minHeight: '100vh',
       animation: 'fadeSlideIn 0.8s ease-out',
       animationFillMode: 'forwards'
     }}>
@@ -40,7 +42,8 @@ export default function Destinations() {
         textAlign: 'center',
         fontSize: '2rem',
         marginBottom: '2rem',
-        fontFamily: '"Bebas Neue", sans-serif'
+        fontFamily: '"Bebas Neue", sans-serif',
+        color: '#333'
       }}>
         Explore Destinations
       </h2>
@@ -69,13 +72,13 @@ export default function Destinations() {
               objectFit: 'cover'
             }} />
             <div style={{ padding: '1rem' }}>
-              <h3 style={{ marginBottom: '0.5rem', fontSize: '1.2rem' }}>{place.name}</h3>
+              <h3 style={{ marginBottom: '0.5rem', fontSize: '1.2rem', color: '#333' }}>{place.name}</h3>
               <p style={{ fontSize: '0.95rem', color: '#555' }}>{place.description}</p>
-              {place.price && <p style={{ fontWeight: 'bold', marginTop: '0.5rem' }}>{place.price}</p>}
+              {place.price && <p style={{ fontWeight: 'bold', marginTop: '0.5rem', color: '#f4a261' }}>{place.price}</p>}
               <button onClick={() => handleBook(place)} style={{
                 marginTop: '1rem',
                 padding: '0.6rem 1.2rem',
-                background: 'linear-gradient(to right, #00b4db, #0083b0)',
+                background: 'linear-gradient(to right, #ff7e5f, #feb47b)', // 🌅 Sunset button
                 color: '#fff',
                 border: 'none',
                 borderRadius: '20px',
