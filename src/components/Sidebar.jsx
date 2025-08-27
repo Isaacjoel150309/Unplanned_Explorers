@@ -82,7 +82,7 @@ export default function Sidebar() {
               {[
                 { path: '/', label: 'Home' },
                 { path: '/destinations', label: 'Destinations' },
-                { path: '/book', label: 'Book a Trip' },
+                // { path: '/book', label: 'Book a Trip' },
                 { path: '/gallery', label: 'Gallery' },
                 { path: '/contact', label: 'Contact Us' }
               ].map(({ path, label }) => (
@@ -93,8 +93,9 @@ export default function Sidebar() {
                   style={{
                     textDecoration: 'none',
                     color: '#333',
-                    fontSize: '1rem',
-                    transition: 'color 0.3s ease'
+                    fontSize: '1.4rem',
+                    transition: 'color 0.3s ease',
+                    letterSpacing: '1px'
                   }}
                   onMouseOver={e => e.currentTarget.style.color = '#ff7e5f'}
                   onMouseOut={e => e.currentTarget.style.color = '#333'}

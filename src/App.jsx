@@ -7,15 +7,13 @@ import BookTrip from './pages/BookTrip';
 import Gallery from './pages/Gallery';
 import ContactUs from './pages/ContactUs';
 import BookingConfirmation from './pages/BookingConfirmation';
+import Explore from './pages/Explore'; // ✅ Add this line
 
 function App() {
   return (
     <div style={{ display: 'flex', height: '100vh' }}>
-      {/* Expandable Sidebar */}
       <Sidebar />
-
-      {/* Main Content Area */}
-      <div style={{ flex: 1,  }}>
+      <div style={{ flex: 1 }}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/destinations" element={<Destinations />} />
@@ -23,6 +21,7 @@ function App() {
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/confirmation" element={<BookingConfirmation />} />
+          <Route path="/explore/:id" element={<Explore />} /> {/* ✅ Add this route */}
         </Routes>
       </div>
     </div>
